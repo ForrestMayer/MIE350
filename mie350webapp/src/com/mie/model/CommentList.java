@@ -8,7 +8,7 @@ public class CommentList {
 	
 	public void add(Comment newComment)
 	{
-		map.put(newComment.getId(), newComment);
+		map.put(newComment.getID(), newComment);
 	}
 	
 	public boolean has(int commentId)
@@ -18,7 +18,7 @@ public class CommentList {
 	
 	public boolean has(Comment Comment)
 	{
-		return map.containsKey(Comment.getId());
+		return map.containsKey(Comment.getID());
 	}
 	
 	public int size()
@@ -40,7 +40,7 @@ public class CommentList {
 
 	public boolean insert(Comment comment)
 	{
-		
+		return true;
 	}
 
 }

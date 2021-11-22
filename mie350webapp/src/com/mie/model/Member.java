@@ -1,3 +1,4 @@
+
 package com.mie.model;
 
 import java.util.Date;
@@ -14,7 +15,22 @@ public class Member {
 	private String password;
 	private String email;
 	private boolean valid;
+	private int phoneNumber;
+	private String birthDate;
+	private CommentList contentList = new CommentList();
+	private MovieList favouriteMovies = new MovieList();
+	private CommentList likedCommentList = new CommentList();
 
+	public CommentList getContentList()
+	{
+		return this.contentList;
+	}
+	
+	public void addContentList(Comment comment)
+	{
+		this.contentList.add(comment);
+	}
+	
 	public int getMemberid() {
 		return memberid;
 	}
@@ -70,7 +86,40 @@ public class Member {
 	public void setValid(boolean newValid) {
 		valid = newValid;
 	}
+	
+	public void setPhoneNumer(int phoneNumber) {
+		this.phoneNumber = phoneNumber;
+		}
 
+	public void setBirthdate(String birthDate) {
+		this.birthDate = birthDate;
+		}
+
+	public void addFavouriteMovie(Movie favouriteMovie) {
+		this.favouriteMovies.add(favouriteMovie);
+		}
+	
+	public void addlikedComment(Comment comment) {
+		this.likedCommentList.add(comment);
+		}
+	
+	public int getPhoneNumber() {
+		return this.phoneNumber;
+		}
+
+	public String getBirthDate() {
+		return this.birthDate;
+		}
+
+	public MovieList getFavouriteMovies() {
+		return this.favouriteMovies;
+		}
+	
+	public CommentList getLikedComments() {
+		return this.likedCommentList;
+		}
+	
+	// Absolutely no clue what this is for
 	@Override
 	public String toString() {
 		return "Member [userid=" + memberid + ", firstName=" + firstName
