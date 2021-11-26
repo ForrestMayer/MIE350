@@ -13,17 +13,17 @@
 /* Set gray background color and 100% height */
 .sidenav {
 	padding-top: 20px;
-	background-color: #000040;
-	height: 20%;
+	background-color: #ffffff;
+	height: 2%;
 }
 .side {
-	background-color: #32cdcd;
-	color: white;
+	background-color: #ffffff;  /*This is to change the color of the background */
+	color: black;
 	padding: 15px;
 }
 /* Set black background color, white text and some padding */
 footer {
-	background-color: #32cdcd;
+	background-color: #ffffff;
 	color: black;
 	padding: 15px;
 }

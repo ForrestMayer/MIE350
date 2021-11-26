@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR" import="com.mie.model.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html lang="en">
 <head>
-<title>Group 11 MIE350 Movie Nests </title>
+<title>Movie Nest - Search Movies</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -23,41 +25,38 @@
 
 <link rel="stylesheet" type="text/css" href="css/mystyle.css">
 </head>
+<body>
 
-<body  >
-	
 	<%@ include file="navbar.jsp"%>
 
+	<%
+		Member member = (Member) session.getAttribute("currentSessionUser");
 
+		//String username = (String) session.getAttribute("username");
+		//String firstname = (String) session.getAttribute("firstname");
+		
+		String movieName = (String) session.getAttribute("username");
+		
+	%>
 
 	<div class="container-fluid text-center">
 		<div class="row content">
 			<div class="col-sm-2 sidenav">
 				<!-- You can put left sidebar links here if you want to. -->
 			</div>
-			<div class ="side">
-				<h1>  Hello! Welcome to MovieNest - by Group 11  </h1> 
-				<img id = "Logo" src = "img/Logo.PNG"/>
-				
-				<p> Here is our server prototype build on top of the template provided by course instructors.
-				On this website, you will be able to find, interact, comment and share with other users about your favourite movies.
-				;
-				
-				</p>
-				
-				<hr>
-				<h3>Internet Browsers</h3>
-				<p>When designing your projects, please make sure to test them
-					with the following browsers:
-				<ul>
-					<li>Google Chrome</li>
-					<li>Mozilla Firefox</li>
-					<li>Internet Explorer (or Microsoft Edge)</li>
-				</ul>
-				Please <b>do not rely on the built-in web browser in Eclipse</b> for
-				testing. Cascading Style Sheet (CSS) templates will not render
-				properly with Eclipse's built-in browser.
-				</p>
+			<div class="col-sm-8 text-left">
+				<h1>Search A Movie</h1>
+
+				Type in any movie title to return movie details. <Br />
+				<Br />
+				<center>
+					<form method="POST" action='SearchController' name="frmAddUser">
+						Keyword: <input type="text" name="keyword"
+							value="<c:out value="${student.searchword}" />"><input
+							type="submit" class="btn btn-info" value="Submit" />
+					</form>
+				</center>
+
 			</div>
 			<div class="col-sm-2 sidenav">
 				<!-- You can put right sidebar links here if you want to. -->
@@ -70,3 +69,4 @@
 
 </body>
 </html>
+
