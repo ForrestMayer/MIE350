@@ -12,6 +12,26 @@ public class Movie {
 	private String language;
 	private String actors;
 	private String productionCompany;
+	
+	public void setID(int id){
+		this.id = id;
+	}
+	public void setYear(int Year){
+		this.year = year;
+	}
+	public void setrunningTime(int time){
+		this.runningTime = time;
+	}
+	public void setmovieTitle(String movieTitle){
+		this.movieTitle = movieTitle;
+	}
+	public void setGenre(String Genre){
+		this.genre = Genre;
+	}
+	public void setlanguage(String language){
+		this.language = language;
+	}
+	
 	//get
 	
 	public int getId()

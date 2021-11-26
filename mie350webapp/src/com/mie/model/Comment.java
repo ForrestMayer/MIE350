@@ -3,18 +3,20 @@ import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+
+
 public class Comment {
 	private Integer ID;
-	private String Username;
-	private String DatePosted;
-	private String RelatedMovie;
+	private int memberID;
+	private int RelatedMovieID;
 	private Integer LikeCount;
 	private String content;
 	private MemberList LikedUsers = new MemberList();
 	
+
 	public void addLikes(){
 	this.LikeCount = this.LikeCount + 1;
-	};	
+	}	
 
 	public void setContent(String content)
 	{
@@ -27,45 +29,47 @@ public class Comment {
 	}
 	public void setID (Integer ID){
 		this.ID = ID;
-	};
+	}
 	
-	public void setUsername (String Username){
-		this.Username = Username;
-	};
+	public void setMemberID (int memberID){
+		this.memberID = memberID;
+	}
 
-	public void setDatePosted (String DatePosted){
-		this.DatePosted = DatePosted;
-	};
-	public void setRelatedMovie (String RelatedMovie){
-		this.RelatedMovie = RelatedMovie;
-	};
+	
+	public void setRelatedMovieID (int RelatedMovie){
+		this.RelatedMovieID = RelatedMovie;
+	}
+	
 	public void addLikedAccounts(Member Account){
 		LikedUsers.add(Account);
-	}; 
+	}
 	
-	public String getUsername (){
-		return this.Username;
-	};
+	public int getMemberID (){
+		return this.memberID;
+	}
 
-	public String getDatePosted (){
-		return this.DatePosted;
-	};
-	public String getRelatedMovie (){
-		return this.RelatedMovie;
-	};
+	
+	public int getRelatedMovieID(){
+		return this.RelatedMovieID;
+	}
+	
 	public Integer getID (){
 		return this.ID;
-	};
+	}
+	
 	public Integer getLikeCount(){
 		return this.LikeCount;
-	};
+	}
+	
+	public MemberList getLikedUsers() {
+		return this.LikedUsers;
+	}
 	 
 	public void readUpdateComment(Iterator args) {
 		try {
 			ID = Integer.parseInt((String) args.next());
-			Username= (String) args.next();
-			DatePosted = (String) args.next();
-			RelatedMovie = (String) args.next();
+			memberID= Integer.parseInt((String) args.next());
+			RelatedMovieID = Integer.parseInt((String) args.next());
 			LikeCount = Integer.parseInt((String) args.next());
 
 		} catch (NumberFormatException e) {
@@ -74,7 +78,24 @@ public class Comment {
 	}
 
 	
+	public void updateComment(String newComment) {
+		this.content = newComment;
+		
+	}
 
+	
+	public void addLike(Member member) {
+		this.LikeCount++;
+		this.LikedUsers.add(member);
+		
+	}
+	
+	public void removeLike(Member member) {
+		this.LikeCount = this.LikeCount-1;
+		this.LikedUsers.remove(member);
+		
+		
+	}
 
 		
 }

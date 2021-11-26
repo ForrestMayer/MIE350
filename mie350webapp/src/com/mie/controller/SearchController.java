@@ -10,9 +10,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import java.sql.DriverManager;
 import com.mie.dao.StudentDao;
 import com.mie.model.Student;
+import com.mie.dao.MovieDao;
+import com.mie.model.Movie;
 
 public class SearchController extends HttpServlet {
 	/**
@@ -24,15 +26,16 @@ public class SearchController extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static String SEARCH_USER = "/searchStudentResult.jsp";
-	private StudentDao dao;
+	private static String SEARCH_USER = "/searchMovie.jsp";
+	//private StudentDao dao;
+	private MovieDao dao;
 
 	/**
 	 * Constructor for this class.
 	 */
 	public SearchController() {
 		super();
-		dao = new StudentDao();
+		dao = new MovieDao();
 	}
 
 	protected void doPost(HttpServletRequest request,
@@ -41,16 +44,20 @@ public class SearchController extends HttpServlet {
 		 * This method handles the retrieval of the search keyword entered by
 		 * the user.
 		 */
+		System.out.println("Helo1.1");
 		String keyword = request.getParameter("keyword");
-
+		System.out.println("Helo1.2");
 		RequestDispatcher view = request.getRequestDispatcher(SEARCH_USER);
+		System.out.println("Helo1.3");
 		request.setAttribute("keyword", keyword);
-		request.setAttribute("students", dao.getStudentByKeyword(keyword));
+		System.out.println("Helo1.4");
+		System.out.println(keyword);
+		request.setAttribute("movieTitle", dao.getMoviebyTitle(keyword));
 		/**
 		 * Redirect to the search results page after the list of students
 		 * matching the keywords has been retrieved.
 		 */
-
+		System.out.println("Helo1.5");
 		view.forward(request, response);
 	}
 }

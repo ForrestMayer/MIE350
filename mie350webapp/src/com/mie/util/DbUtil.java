@@ -29,17 +29,25 @@ public class DbUtil {
 						.getResourceAsStream("/db.properties");
 				prop.load(inputStream);
 				String driver = prop.getProperty("driver");
+				System.out.println(driver);
 				String url = prop.getProperty("url");
+				System.out.println(url);
 				String user = prop.getProperty("user");
+				System.out.println(user);
 				String password = prop.getProperty("password");
+				System.out.println(password);
 				Class.forName(driver);
+				
 				connection = DriverManager.getConnection(url, user, password);
+				
 			} catch (ClassNotFoundException e) {
+				System.out.println("Driver Problem");
 				e.printStackTrace();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
+				System.out.println("path Problem");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

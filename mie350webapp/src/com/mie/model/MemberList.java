@@ -34,4 +34,9 @@ public class MemberList {
 		public Iterator iterator() {
 			return map.values().iterator();
 		}
+		
+		public void remove(Member member) {
+			 map.remove(member);
+		}
+		
 }
